@@ -7,7 +7,7 @@ const PORT = 3001;
 // 🔧 EASY CUSTOMIZATION
 // ============================================================
 
-const FINAL_URL = process.env.FINAL_URL || 'https://www.google.com';
+const FINAL_URL = process.env.FINAL_URL || 'https://github.com';
 const MICROSOFT_APP = 'Microsoft Office';
 
 // DEMO EMAIL FOR TESTING ON LOCALHOST - ONLY USED IF NO REAL EMAIL FOUND
