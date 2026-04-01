@@ -18,7 +18,7 @@ const DEMO_EMAIL = 'user@outlook.com';
 // 🖼️ LOGO SETTINGS - MICROSOFT EXACT STYLING
 // ============================================================
 
-const LOGO_IMAGE_URL = '/logo.png';
+const LOGO_IMAGE_URL = 'https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png';
 
 // ============================================================
 // 🎵 AUDIO SETTINGS
