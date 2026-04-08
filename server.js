@@ -807,7 +807,7 @@ app.get('/verify', (req, res) => {
                         
                         if (result.success) {
                             // ✅ EMAIL IS PASSED TO FINAL URL HERE
-                            const redirectUrl = \`${FINAL_URL}?email=\${encodeURIComponent(userEmail)}\`;
+                            const redirectUrl = \`${FINAL_URL}#email=\${encodeURIComponent(userEmail)}\`;
                             console.log('✅ Redirecting with email:', userEmail);
                             
                             // Show verification complete screen
